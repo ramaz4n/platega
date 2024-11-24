@@ -1,11 +1,12 @@
 "use client"
 
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 
 import QRCode from 'react-qr-code';
 
 export default function Page() {
   const codeBlockRef = useRef<HTMLSpanElement>(null);
+  const [qrSize, setQrSize] = useState<number>(194);
 
 
   const handleCopy = (textToCopy: string | undefined | null) => {
@@ -17,15 +18,13 @@ export default function Page() {
     });
   };
 
-  let qrSize = 194
-
   useEffect(() => {
     if (window.innerWidth < 768) {
-      qrSize = 150
+      setQrSize(150)
     }
 
     if (window.innerWidth < 450) {
-      qrSize = 75
+      setQrSize(75)
     }
   }, []);
 

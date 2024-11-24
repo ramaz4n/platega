@@ -1,5 +1,6 @@
 import "./globals.css";
 import {Metadata} from "next";
+import {Toaster} from "react-hot-toast";
 
 export const metadata: Metadata = {
   description: 'Форма оплаты',
@@ -17,7 +18,7 @@ export default function RootLayout({
         className="w-full flex flex-col min-h-screen items-center pb-[100px] font-regular px-[20px]"
       >
         <div className="flex flex-col items-center mt-[67px] max-w-[764px] w-full">
-          <img className="w-[288px] h-[74px] object-cover md:h-[30px] md:w-[113px]" src="/images/logo.svg" alt="logo"/>
+          <img className="w-[288px] h-[74px] object-cover md:h-[30px] md:w-[120px]" src="/images/logo.svg" alt="logo"/>
 
           <div
             className="mt-[68px] w-full h-[104px] flex items-center justify-between
@@ -36,6 +37,16 @@ export default function RootLayout({
 
           <span className="text-[#E4E4E4] text-[22px] font-medium mt-[30px] md:text-[9px] md:mt-[20px] xs:mt-[11px]">platega.io</span>
         </div>
+
+        <Toaster
+          position="top-right"
+          reverseOrder={false}
+          toastOptions={{
+            style: {
+              fontSize: '14px',
+            },
+          }}
+        />
       </body>
     </html>
   );

@@ -1,18 +1,35 @@
 "use client"
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import cc from 'classcat';
 import {useRouter} from "next/navigation";
+import {apiRequest} from "@/shared/api/api-request.ts";
 
 export default function Home() {
   const [payType, setPayType] = useState<string>('')
+  const [paymentmethods, setPaymentMethods] = useState<object[]>([])
 
   const router = useRouter();
 
   const resumeBtnHandler = () => {
     if (payType) router.push(`/${payType}`)
   }
+
+  const getPaymentMethods = async () => {
+
+    const response = await apiRequest({
+      url: 'transaction/payment_methods',
+    })
+
+    if (response) {
+      setPaymentMethods(response.paymentMethods)
+    }
+  }
+
+  useEffect(() => {
+    getPaymentMethods()
+  },[])
 
 
   return (
