@@ -31,7 +31,8 @@ export default function Page() {
 
   }
 
-  const handleCopy = (textToCopy: string | undefined) => {
+  const handleCopy = (textToCopy: string | undefined | null) => {
+    if (textToCopy === null) return;
     navigator.clipboard.writeText(textToCopy!).then(() => {
 
     }).catch(err => {

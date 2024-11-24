@@ -8,7 +8,8 @@ export default function Page() {
   const codeBlockRef = useRef<HTMLSpanElement>(null);
 
 
-  const handleCopy = (textToCopy: string | undefined) => {
+  const handleCopy = (textToCopy: string | undefined | null) => {
+    if (textToCopy === null) return;
     navigator.clipboard.writeText(textToCopy!).then(() => {
 
     }).catch(err => {
