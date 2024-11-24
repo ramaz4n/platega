@@ -6,8 +6,6 @@ import {maskito} from "@/shared/utils/maskito";
 import {Masks} from "@/shared/constants/masks";
 
 export default function Page() {
-  const cardInputRef = useRef<HTMLInputElement>(null);
-  const sumInputRef = useRef<HTMLInputElement>(null);
   const codeBlockRef = useRef<HTMLSpanElement>(null);
 
 
@@ -16,6 +14,7 @@ export default function Page() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({
     defaultValues: {
       cardNumber: '',
@@ -24,6 +23,9 @@ export default function Page() {
     },
     mode: 'all',
   });
+
+  const cardNumber = watch('cardNumber');
+  const sumValue = watch('sum');
 
   const onSubmit = () => {
 
@@ -62,7 +64,6 @@ export default function Page() {
             render={({field: {onChange, ...field}}) => (
               <input
                 {...field}
-                ref={cardInputRef}
                 className="w-full h-[85px] cursor-text max-w-[664px] bg-[#f0f0f0] text-[22px]
                   text-[#808080] flex items-center justify-center gap-x-[10px] rounded-[30px] px-[50px]
                   placeholder:text-[22px] placeholder:text-[#808080]
@@ -76,7 +77,7 @@ export default function Page() {
             )}
           />
           <img
-            onClick={() => handleCopy(cardInputRef.current?.value)}
+            onClick={() => handleCopy(cardNumber)}
             className="cursor-pointer absolute inset-y-0 m-auto right-[50px] md:size-[16px] xs:size-[12px] md:right-[30px] xs:right-[20px]"
             src="/images/copy.svg" alt="copy"
           />
@@ -105,7 +106,6 @@ export default function Page() {
         <div className="flex flex-col">
           <div className="relative">
             <input
-              ref={sumInputRef}
               className="w-full h-[85px] cursor-text max-w-[664px] bg-[#f0f0f0] text-[22px]
                 text-[#808080] flex items-center justify-center gap-x-[10px] rounded-[30px] px-[50px]
                 placeholder:text-[22px] placeholder:text-[#808080]
@@ -120,7 +120,7 @@ export default function Page() {
               }
             />
             <img
-              onClick={() => handleCopy(sumInputRef.current?.value)}
+              onClick={() => handleCopy(sumValue)}
               className="cursor-pointer absolute inset-y-0 m-auto right-[50px] md:size-[16px] xs:size-[12px] md:right-[30px] xs:right-[20px]"
               src="/images/copy.svg"
               alt="copy"/>
