@@ -1,11 +1,10 @@
 "use client"
 
 import {useRef, useState} from "react";
-import cc from "classcat";
 
 export default function Page() {
   const codeBlockRef = useRef<HTMLSpanElement>(null);
-  const [status, setStatus] = useState({
+  const [status] = useState({
     text: 'Платеж не прошел',
     color: 'red',
     icon: 'error'
