@@ -2,8 +2,8 @@
 
 import {Controller, useForm} from "react-hook-form";
 import {useRef} from "react";
-import {maskito} from "@/shared/utils/maskito";
-import {Masks} from "@/shared/constants/masks";
+import {maskito} from "../../shared/utils/maskito";
+import {Masks} from "../../shared/constants/masks";
 
 export default function Page() {
   const cardInputRef = useRef<HTMLInputElement>(null);
