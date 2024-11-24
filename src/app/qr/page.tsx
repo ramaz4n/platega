@@ -1,6 +1,6 @@
 "use client"
 
-import {useRef} from "react";
+import {useEffect, useRef} from "react";
 
 import QRCode from 'react-qr-code';
 
@@ -19,13 +19,17 @@ export default function Page() {
 
   let qrSize = 194
 
-  if (window.innerWidth < 768) {
-    qrSize = 150
-  }
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      qrSize = 150
+    }
 
-  if (window.innerWidth < 450) {
-    qrSize = 75
-  }
+    if (window.innerWidth < 450) {
+      qrSize = 75
+    }
+  }, []);
+
+
 
 
   return (
