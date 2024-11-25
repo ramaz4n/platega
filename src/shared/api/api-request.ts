@@ -21,7 +21,7 @@ export const apiRequest = async ({
                                    ...options
                                  }: ApiRequestProps) => {
   try {
-    const authToken = window.localStorage.getItem('authToken');
+    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ5Umhac0Z1bndlUjAwMk8waVhmQkRuT0Yyb0YzIiwiZGF0ZSI6IjIwMjQtMTAtMTVUMTY6NTI6MDkuNDMyWiIsImlhdCI6MTcyOTAxMTEyOX0.VQ9jQvIWWeL4ZLgnu1szSjk8to3ytXyziYCGvZPX0X8';
     const fullUrl = parseApiUrl(params, url, slug);
 
     const isFormData = data instanceof FormData;

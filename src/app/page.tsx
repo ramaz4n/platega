@@ -5,10 +5,10 @@ import {useEffect, useState} from "react";
 import cc from 'classcat';
 import {useRouter} from "next/navigation";
 import {apiRequest} from "@/shared/api/api-request.ts";
+import {useMyContext} from "@/context/my-context.tsx";
 
 export default function Home() {
-  const [payType, setPayType] = useState<string>('')
-  const [paymentmethods, setPaymentMethods] = useState<object[]>([])
+  const {payType,setPayType, paymentMethods, setPaymentMethods} = useMyContext();
 
   const router = useRouter();
 
